@@ -378,33 +378,26 @@ namespace Manage2525DStyles
         {
             // Change dash pattern on planned frames
 
-            //string line;
-            //System.IO.StreamReader fileIn;
-            //System.IO.StreamWriter fileOut;
-
             string[] files = Directory.GetFiles(frames, "*_1.svg", SearchOption.AllDirectories);
+            string[] cFiles = Directory.GetFiles(frames, "*_1c.svg", SearchOption.AllDirectories);
+            string[] allFiles = files.Concat(cFiles).ToArray();
 
-            foreach (string file in files)
+            foreach (string file in allFiles)
             {
                 string text = File.ReadAllText(file);
                 text = text.Replace("stroke-dasharray=" + '"' + "24.1702,14.5021" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "24.5874,14.7524" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "25.4169,15.2501" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "24.267,14.5602" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "23.3682,14.0209" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "25.4169,20.3335" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "23.4314,14.0588" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "25.7843,15.4706" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "25.5417,15.325" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "23.5714,14.1429" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "22.1063,13.2638" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
+                text = text.Replace("stroke-dasharray=" + '"' + "25,15" + '"', "stroke-dasharray=" + '"' + "75,45" + '"');
                 File.WriteAllText(file, text);
-
-                //fileIn = new System.IO.StreamReader(file);
-                //fileOut = new System.IO.StreamWriter(l[3] + _strScratchCSVs + file.Substring(file.LastIndexOf('\\')), false);
-
-                //while ((line = fileIn.ReadLine()) != null)
-                //{
-                //    if (line.StartsWith("{Symbols_Root}"))
-                //    {
-                //        line = line.Replace("{Symbols_Root}", l[1] + "_EMF");
-                //    }
-
-                //    fileOut.WriteLine(line);
-                //}
-
-                //fileOut.Close();
-                //fileIn.Close();
             }
         }
 
